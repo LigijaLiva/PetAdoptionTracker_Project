@@ -1,0 +1,41 @@
+package application;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.sql.SQLException;
+
+/**
+ * This class automates database creation and migration.
+ * It runs the SQL script to create the necessary tables and insert initial data.
+ */
+public class DatabaseMigrator {
+
+    private DBConnection dbConnection;
+
+    public DatabaseMigrator() {
+        dbConnection = new DBConnection();
+    }
+
+    /**
+     * Reads the SQL script from a file and executes it to create or migrate the database.
+     */
+    public void migrateDatabase() {
+        try (Connection conn = dbConnection.connect()) {
+            // Load SQL script from the file
+            String sql = new String(Files.readAllBytes(Paths.get("path/to/your/Dumpcattable.sql")));
+
+            // Execute the SQL script
+            try (Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(sql);
+                System.out.println("Datu bāze veiksmīgi izveidota un migrēta!");
+            } catch (SQLException e) {
+                System.out.println("Kļūda, izpildot SQL skriptu: " + e.getMessage());
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
