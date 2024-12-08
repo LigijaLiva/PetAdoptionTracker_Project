@@ -1,0 +1,31 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ConfigLoader {
+
+    private Properties properties = new Properties();
+
+    // Metode konfigurācijas faila ielādēšanai
+    public void loadConfig(String fileName) {
+        try (FileInputStream inputStream = new FileInputStream(fileName)) {
+            properties.load(inputStream); // Ielādē konfigurācijas datus no faila
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Neizdevās ielādēt konfigurācijas failu!");
+        }
+    }
+
+    // Piekļuve konfigurācijas datiem
+    public String getDBUrl() {
+        return properties.getProperty("db.url");
+    }
+
+    public String getDBUsername() {
+        return properties.getProperty("db.username");
+    }
+
+    public String getDBPassword() {
+        return properties.getProperty("db.password");
+    }
+}
