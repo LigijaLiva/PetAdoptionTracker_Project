@@ -1,0 +1,43 @@
+package application;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DBConnectionTest {
+
+    private DBConnection dbConnection;
+
+    @BeforeEach
+    void setUp() {
+        dbConnection = new DBConnection(); // Inicializē DBConnection objektu
+    }
+
+    @Test
+    void testConnect() {
+        try {
+            // Mēģinām izveidot savienojumu ar datu bāzi
+            Connection conn = dbConnection.connect();
+            assertNotNull(conn, "Savienojums nedrīkst būt null");
+            conn.close(); // Aizveram savienojumu pēc testa veikšanas
+        } catch (SQLException e) {
+            fail("Savienojuma izveide neizdevās: " + e.getMessage());
+        }
+    }
+
+    @Test
+    void testConnectionValid() {
+        try {
+            // Pārbaudām, vai savienojums ir derīgs
+            Connection conn = dbConnection.connect();
+            assertTrue(conn.isValid(2), "Savienojums nav derīgs");
+            conn.close(); // Aizveram savienojumu pēc testa veikšanas
+        } catch (SQLException e) {
+            fail("Savienojuma pārbaude neizdevās: " + e.getMessage());
+        }
+    }
+}
