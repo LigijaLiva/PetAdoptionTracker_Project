@@ -1,41 +1,14 @@
-# Eclipse IDE preferences version, kas norāda uz konfigurācijas faila versiju
 eclipse.preferences.version=1
-
-# Kompilatoram norādīts, ka tas var izmantot  inline JSR bytecode (Java Speciālās Reģistrācijas bytecode), kas ir iespējots.
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
-
-# Norāda, ka kompilators izmantos Java 17 kā mērķplatformu (Java versija, uz kuru tiks kompilēts kods).
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=17
-
-# Saglabā visas neizmantotās vietējās mainīgās, neizdzēš tās kompilēšanas laikā.
 org.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve
-
-# Norāda, ka Java 17 būs izmantota kompilēšanas saderība (Java versijas saderība).
 org.eclipse.jdt.core.compiler.compliance=17
-
-# Norāda, ka jāģenerē avota faila līnijas numuri kompilētajā kodā, lai būtu vieglāk veikt atkļūdošanu.
 org.eclipse.jdt.core.compiler.debug.lineNumber=generate
-
-# Norāda, ka kompilēšanas laikā jāģenerē vietējo mainīgo informācija, lai varētu veikt detalizētu atkļūdošanu.
 org.eclipse.jdt.core.compiler.debug.localVariable=generate
-
-# Norāda, ka kompilēšanas laikā jāģenerē avota faila informācija (lai atkļūdošanā būtu pieejams arī avota fails).
 org.eclipse.jdt.core.compiler.debug.sourceFile=generate
-
-# Nosaka, ka, ja tiek izmantota atslēgas vārda `assert` sintakse, tas tiks uzskatīts par kļūdu.
 org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
-
-# Norāda, ka iepriekšējās funkcijas (Preview Features) nav iespējotas un tiek izslēgtas.
 org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures=disabled
-
-# Norāda, ka atslēgas vārds `enum` tiek uzskatīts par kļūdu (šajā gadījumā tas ir nepareizs vai nederīgs kods).
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
-
-# Norāda, ka kļūdu ziņojumos par preview funkcijām jābūt brīdinājumam, nevis kļūdai.
 org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=warning
-
-# Norāda, ka kompilatoram jāizmanto Java 17 izlaidums.
 org.eclipse.jdt.core.compiler.release=enabled
-
-# Norāda, ka kompilatoram jāizmanto Java 17 kā avota versija.
 org.eclipse.jdt.core.compiler.source=17
