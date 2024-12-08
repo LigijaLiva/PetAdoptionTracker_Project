@@ -1,0 +1,46 @@
+package application;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
+
+public class DBMigration {
+
+    private DBConnection dbConnection;
+
+    public DBMigration() {
+        dbConnection = new DBConnection(); // Izveido jaunu DBConnection objektu
+    }
+
+    public void runMigration() {
+        try (Connection conn = dbConnection.connect()) {
+            // Izpildām SQL skriptu, kas izveido nepieciešamās tabulas
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS pets ("
+                    + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                    + "breed VARCHAR(45), "
+                    + "description VARCHAR(100)"
+                    + ");";
+
+            String createAdminsTableSQL = "CREATE TABLE IF NOT EXISTS admins ("
+                    + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                    + "username VARCHAR(45), "
+                    + "password VARCHAR(45)"
+                    + ");";
+
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(createTableSQL); // Izpildām tabulas izveidošanas SQL
+            stmt.executeUpdate(createAdminsTableSQL); // Izpildām otro tabulas izveidošanas SQL
+
+            // Šeit var pievienot citas tabulas vai procedūras, kas ir nepieciešamas tavam projektam
+            System.out.println("Datu bāze ir veiksmīgi migrēta!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Datu bāzes migrācija neizdevās.");
+        }
+    }
+
+    public static void main(String[] args) {
+        DBMigration dbMigration = new DBMigration();
+        dbMigration.runMigration(); // Palaid migrāciju
+    }
+}
