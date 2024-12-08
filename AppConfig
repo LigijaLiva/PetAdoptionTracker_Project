@@ -1,0 +1,40 @@
+package application;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+/**
+ * This class loads application configuration from an external .properties file.
+ * It reads configuration values like database URL, username, password, etc.
+ */
+public class AppConfig {
+
+    private Properties properties = new Properties();  // Šī klase turēs ielādēto konfigurāciju
+
+    /**
+     * Loads the configuration data from the given .properties file.
+     * @param fileName The name of the properties file to load.
+     */
+    public void loadConfig(String fileName) {
+        try (FileInputStream inputStream = new FileInputStream(fileName)) {
+            properties.load(inputStream);  // Ielādē konfigurāciju no faila
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Nepareizs konfigurācijas fails vai problēma ar faila nolasīšanu!");
+        }
+    }
+
+    // Metodes, lai piekļūtu dažādiem konfigurācijas datiem
+    public String getDBUrl() {
+        return properties.getProperty("db.url");  // Atgriež datu bāzes URL
+    }
+
+    public String getDBUsername() {
+        return properties.getProperty("db.username");  // Atgriež datu bāzes lietotājvārdu
+    }
+
+    public String getDBPassword() {
+        return properties.getProperty("db.password");  // Atgriež datu bāzes paroli
+    }
+}
