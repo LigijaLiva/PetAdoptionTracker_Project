@@ -1,5 +1,2 @@
-# Eclipse IDE konfigurācijas fails, kas satur dažādus iestatījumus un preferenču versijas
-eclipse.preferences.version=1  # Šis ir Eclipse projekta konfigurācijas fails, un šī rinda norāda izmantoto konfigurācijas versiju.
-
-# Projekta iestatījumi: noteikts faila kodējums
-encoding/<project>=UTF-8  # Šī rinda nosaka, ka projekta faili jāatver un jāglabā, izmantojot UTF-8 rakstzīmju kodējumu.
+eclipse.preferences.version=1
+encoding/<project>=UTF-8
