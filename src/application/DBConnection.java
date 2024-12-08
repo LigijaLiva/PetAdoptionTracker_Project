@@ -13,12 +13,12 @@ public class DBConnection {
     // Static variable to hold the database connection object
     public static Connection databaselink;
 
-    // Izveidojam ConfigLoader objektu
-    private ConfigLoader configLoader;
+    // Izveido AppConfig objektu, lai nolasītu konfigurācijas datus
+    private AppConfig appConfig;
 
     public DBConnection() {
-        configLoader = new ConfigLoader(); // Inicializējam ConfigLoader
-        configLoader.loadConfig("config.properties"); // Ielādējam konfigurāciju no faila
+        appConfig = new AppConfig();  // Inicializē AppConfig objektu
+        appConfig.loadConfig("config.properties");  // Ielādē konfigurāciju no faila
     }
 
     /**
@@ -27,21 +27,20 @@ public class DBConnection {
      * @throws SQLException if a database access error occurs.
      */
     public Connection connect() throws SQLException {
-        // Iegūstam konfigurāciju datus no ConfigLoader
-        String url = configLoader.getDBUrl();
-        String username = configLoader.getDBUsername();
-        String password = configLoader.getDBPassword();
+        // Iegūstam konfigurāciju no AppConfig
+        String url = appConfig.getDBUrl();
+        String username = appConfig.getDBUsername();
+        String password = appConfig.getDBPassword();
 
-        // Attempting to establish the database connection
+        // Mēģinām izveidot savienojumu ar datu bāzi
         try {
             databaselink = DriverManager.getConnection(url, username, password);
         } catch (SQLException ex) {
-            // If an error occurs, print the stack trace and rethrow the exception
-            ex.printStackTrace();
-            throw ex;
+            ex.printStackTrace();  // Ja rodas kļūda, parādām tās izsistēmu
+            throw ex;  // Atkārtoti izsistam kļūdu
         }
 
-        // Returning the established connection
+        // Atgriežam izveidoto savienojumu
         return databaselink;
     }
 }
