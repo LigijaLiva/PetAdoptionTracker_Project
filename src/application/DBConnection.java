@@ -13,19 +13,24 @@ public class DBConnection {
     // Static variable to hold the database connection object
     public static Connection databaselink;
 
+    // Izveidojam ConfigLoader objektu
+    private ConfigLoader configLoader;
+
+    public DBConnection() {
+        configLoader = new ConfigLoader(); // Inicializējam ConfigLoader
+        configLoader.loadConfig("config.properties"); // Ielādējam konfigurāciju no faila
+    }
+
     /**
      * Establishes a connection to the database.
      * @return Connection object representing the database connection.
      * @throws SQLException if a database access error occurs.
      */
     public Connection connect() throws SQLException {
-
-        // Database details:
-        // The name of the database, username, password, and URL for connection.
-        String db_emer = "kitcats"; // Name of the database
-        String username = "root";  // Username for the database
-        String password = "Via2023+4"; // Password for the database
-        String url = "jdbc:mysql://localhost:3306/" + db_emer; // Connection URL
+        // Iegūstam konfigurāciju datus no ConfigLoader
+        String url = configLoader.getDBUrl();
+        String username = configLoader.getDBUsername();
+        String password = configLoader.getDBPassword();
 
         // Attempting to establish the database connection
         try {
