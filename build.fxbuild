@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="ASCII"?>
+<!-- Norāda dokumenta versiju un kodējumu. -->
 <anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build">
+  <!-- Galvenais AntTask elements, kas norāda, ka šī ir Ant uzdevuma konfigurācija, kas ietver dažādus izvietošanas iestatījumus. -->
+  
   <deploy>
+    <!-- Deploy elements norāda izvietošanas procesu šajā Ant uzdevumā. -->
     <application name="nosaukums"/>
+    <!-- Application elements nosaka nosaukumu izvietošanas aplikācijai, šajā gadījumā "nosaukums". -->
     <info/>
+    <!-- Info elements sniedz papildu informāciju par izvietojamās aplikācijas kontekstu, taču šeit tas ir tukšs. -->
   </deploy>
+
   <signjar/>
+  <!-- Signjar elements norāda, ka jāparaksta JAR failus šajā procesā, bet papildu konfigurācija netiek norādīta. -->
 </anttasks:AntTask>
